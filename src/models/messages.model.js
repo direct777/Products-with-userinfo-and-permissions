@@ -1,16 +1,17 @@
-// product-model.js - A mongoose model
+// messages-model.js - A mongoose model
 //
 // See http://mongoosejs.com/docs/models.html
 // for more of what you can do here.
-const mongoose = require('mongoose');
 module.exports = function (app) {
-  const modelName = 'product';
+  const modelName = 'messages';
   const mongooseClient = app.get('mongooseClient');
   const { Schema } = mongooseClient;
   const schema = new Schema({
-    name: { type: String, required: true },
-    description: { type: String, required: true },
-    userId: { type: mongoose.Types.ObjectId }
+    userIds: { type: String, required: true },
+    emails: { type: String, required: true },
+    text: { type: String, required: true }
+  }, {
+    timestamps: true
   });
 
   // This is necessary to avoid model compilation errors in watch mode

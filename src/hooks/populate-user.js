@@ -16,6 +16,7 @@ module.exports = (options = {}) => {
     };
 
     if (method === 'find') {
+      //recomended to use populate instead https://mongoosejs.com/docs/populate.html
       context.result.data = await Promise.all(result.data.map(addUser));
     } else {
       context.result = await addUser(result);
