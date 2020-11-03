@@ -21,7 +21,7 @@ module.exports = function (app) {
   service.publish((data, hook) => {
     console.log('message data=', data);
     return [
-      app.channel(`userIds/${data.userId}`), //product.user
+      app.channel(`userIds/${data.userIds}`), //product.user
       app.channel(`emails/${data.user.email}`)
     ];
   })
