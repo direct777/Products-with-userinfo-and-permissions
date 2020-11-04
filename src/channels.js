@@ -28,15 +28,25 @@ module.exports = function(app) {
   });
   const updateChannels = product => {
     console.log('product updated=', product);
+
     app.service('messages').create({
       userIds: `${product.userId}`,
       emails: `${product.user.email}`,
       text: `Product updated name: ${product.name}`
     }, {});
   }
+  const createChannels = product => {
+    console.log('product created =', product);
 
+    app.service('messages').create({
+      userIds: `${product.userId}`,
+      emails: `${product.user.email}`,
+      text: `Product created name: ${product.name}`
+    }, {});
+  }
   app.service('product').on('updated', updateChannels);
   app.service('product').on('patched', updateChannels);
+  app.service('product').on('created', createChannels);
   // eslint-disable-next-line no-unused-vars
   app.publish((data, hook) => {
     // e.g. to publish all service events to all authenticated users use
