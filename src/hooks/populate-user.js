@@ -7,7 +7,6 @@ module.exports = (options = {}) => {
     const { app, method, result, params } = context;
     const addUser = async product => {
       const user = await app.service('users').get(product.userId, params);
-
       // Merge the product content to include the `user` object
       return {
         ...product,

@@ -34,7 +34,7 @@ module.exports = function(app) {
       emails: `${product.user.email}`,
       text: `Product updated name: ${product.name}`
     }, {});
-  }
+  };
   const createChannels = product => {
     console.log('product created =', product);
 
@@ -43,7 +43,7 @@ module.exports = function(app) {
       emails: `${product.user.email}`,
       text: `Product created name: ${product.name}`
     }, {});
-  }
+  };
   app.service('product').on('updated', updateChannels);
   app.service('product').on('patched', updateChannels);
   app.service('product').on('created', createChannels);

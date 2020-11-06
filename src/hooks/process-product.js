@@ -11,6 +11,7 @@ module.exports = function (options = {}) { // eslint-disable-line no-unused-vars
       name: data.name,
       description: data.description,
       userId: user._id,
+      user: user._id,
       createdAt: Date.now()
     };
 
