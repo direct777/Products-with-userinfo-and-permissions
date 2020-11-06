@@ -18,11 +18,11 @@ module.exports = function (app) {
   service.hooks(hooks);
   // Override the default publish so we only send data within
   // these channels
-  service.publish((data, hook) => {
+  service.publish((data) => {
     console.log('message data=', data);
     return [
       app.channel(`userIds/${data.userIds}`), //product.user
       app.channel(`emails/${data.user.email}`)
     ];
-  })
+  });
 };

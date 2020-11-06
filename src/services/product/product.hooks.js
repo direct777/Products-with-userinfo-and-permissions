@@ -9,8 +9,8 @@ module.exports = {
     find: [],
     get: [checkPermission()],
     create: [processProduct(), checkPermission()],
-    update: [checkPermission()],
-    patch: [checkPermission()],
+    update: [processProduct(), checkPermission()],
+    patch: [processProduct(), checkPermission()],
     remove: [checkPermission()]
   },
 

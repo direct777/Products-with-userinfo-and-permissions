@@ -10,9 +10,14 @@ module.exports = function (app) {
   const schema = new Schema({
     name: { type: String, required: true },
     description: { type: String, required: true },
-    userId: { type: mongoose.Types.ObjectId }
+    userId: { type: mongoose.Types.ObjectId },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'users',
+      autopopulate: true
+    }
   });
-
+  schema.plugin(require('mongoose-autopopulate'));
   // This is necessary to avoid model compilation errors in watch mode
   // see https://mongoosejs.com/docs/api/connection.html#connection_Connection-deleteModel
   if (mongooseClient.modelNames().includes(modelName)) {
